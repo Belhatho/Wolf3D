@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: belhatho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 16:39:37 by hbouchak          #+#    #+#             */
-/*   Updated: 2020/01/21 20:19:16 by hbouchak         ###   ########.fr       */
+/*   Created: 2021/11/12 00:54:28 by belhatho          #+#    #+#             */
+/*   Updated: 2021/11/12 00:54:30 by belhatho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		initializing(t_wolf3d *w3d, char *file)
 	w3d->height_map = 0;
 	w3d->mlx = mlx_init();
 	w3d->pos_joueur = (t_vect_f){-1.0, -1.0};
-	if (parser(w3d, file, 0, 0) == -1 && write(1, "error: parser fails\n", 20))
+	if (parser(w3d, file, 0) == -1 && write(1, "error: parser fails\n", 20))
 		exit(0);
 	if (w3d->pos_joueur.x == -1.0 && write(1, "error: need a free space\n", 25))
 	{

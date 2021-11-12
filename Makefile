@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: belhatho <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/21 16:55:03 by hbouchak          #+#    #+#              #
-#    Updated: 2020/01/22 14:36:17 by ibel-kha         ###   ########.fr        #
+#    Created: 2021/11/12 01:25:46 by belhatho          #+#    #+#              #
+#    Updated: 2021/11/12 01:25:47 by belhatho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,7 @@ SRCS = srcs/main.c\
       srcs/texture.c\
       srcs/events.c
 
-OBJ = srcs/main.o\
-      srcs/parser.o\
-      srcs/draw.o\
-      srcs/raycasting.o\
-      srcs/texture.o\
-      srcs/events.o
+OBJ = $(SRCS:.c=.o)
 
 LIBFT = -L libft -lft
 
@@ -41,7 +36,7 @@ $(NAME): $(OBJ)
 	@$(CC) -o wolf3d $(OBJ) $(LIBFT) $(MLX)
 
 %.o: %.c
-	$(CC) -c $< -o $@ 
+	$(CC) -c $< -o $@
 
 clean:
 	@make clean -C libft/

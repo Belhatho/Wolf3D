@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: belhatho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 16:40:54 by hbouchak          #+#    #+#             */
-/*   Updated: 2020/01/21 21:00:14 by hbouchak         ###   ########.fr       */
+/*   Created: 2021/11/12 00:57:48 by belhatho          #+#    #+#             */
+/*   Updated: 2021/11/12 00:57:51 by belhatho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ typedef struct		s_thread
 	int				x_th;
 }					t_thread;
 
-int					parser(t_wolf3d *w3d, char *file, int len, int j);
+int					parser(t_wolf3d *w3d, char *file, int len);
 int					final(t_wolf3d *w3d);
 int					mouse(int x, int y, t_wolf3d *w3d);
 int					events(int k, t_wolf3d *w3d);

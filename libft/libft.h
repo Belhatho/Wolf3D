@@ -3,24 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: belhatho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 13:35:43 by hbouchak          #+#    #+#             */
-/*   Updated: 2020/01/22 15:23:33 by ibel-kha         ###   ########.fr       */
+/*   Created: 2019/05/21 20:22:11 by belhatho          #+#    #+#             */
+/*   Updated: 2019/12/22 00:53:19 by belhatho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# define BUFF_SIZE 10
-# define FREE(buf, y) ({ if (buf) free(buf); buf = NULL; y; })
 
-void			ft_1(char	**save, char	*buf);
-void			ft_2(char **line, char **save, int i);
-int				get_next_line(int const fd, char **line);
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+
+# define BUFF_SIZE 50
 
 typedef struct	s_list
 {
@@ -48,6 +45,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strcpy(char *dest, const char *src);
 char			*ft_strdup(const char *src);
 size_t			ft_strlen(const char *s);
+size_t			ft_strlen2( char **s);
 char			*ft_strncat(char *dest, const char *src, int nb);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strncpy(char *dest, const char *src, size_t n);
@@ -65,6 +63,7 @@ int				ft_strequ(char const *s1, char const *s2);
 void			ft_striter(char *s, void (*f)(char*));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin2(char *s1, char *s2, int tofree);
 char			*ft_strmap(char const *s, char (*f)(char));
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
@@ -99,9 +98,8 @@ int				ft_str_is_numeric(char *str);
 int				ft_str_is_lowercase(char *str);
 int				ft_str_is_alpha(char *str);
 int				ft_nbr_size(int *n, int *test, int *str_size);
-void			*ft_realloc(void **ptr, size_t old, size_t len);
+int				get_next_line(int fd, char **line);
 void			ft_free(char ***to);
-char			*ft_strjoin2(char *s1, char *s2, int tofree);
-int				ft_strlen2(char **twodim);
+void			*ft_realloc(void **ptr, size_t old, size_t len);
 
 #endif

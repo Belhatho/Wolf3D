@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: belhatho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 16:43:35 by hbouchak          #+#    #+#             */
-/*   Updated: 2020/01/21 16:43:43 by hbouchak         ###   ########.fr       */
+/*   Created: 2021/11/12 01:08:40 by belhatho          #+#    #+#             */
+/*   Updated: 2021/11/12 01:08:46 by belhatho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,4 @@ void	*ft_realloc(void **ptr, size_t old, size_t len)
 		free(*ptr);
 	return (real);
 }
+

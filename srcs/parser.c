@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: belhatho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 16:39:47 by hbouchak          #+#    #+#             */
-/*   Updated: 2020/01/21 20:56:48 by hbouchak         ###   ########.fr       */
+/*   Created: 2021/11/12 00:55:23 by belhatho          #+#    #+#             */
+/*   Updated: 2021/11/12 00:55:25 by belhatho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	aux(t_wolf3d *w3d, int len, char **split, char *line)
 	free(line);
 }
 
-int			parser(t_wolf3d *w3d, char *file, int len, int j)
+int			parser(t_wolf3d *w3d, char *file, int len)
 {
 	char	**split;
 	char	*line;
@@ -69,12 +69,12 @@ int			parser(t_wolf3d *w3d, char *file, int len, int j)
 	w3d->map = NULL;
 	if ((fd = open(file, O_RDONLY)) == -1 || read(fd, line, 0) < 0)
 		return (-1);
-	while (get_next_line(fd, &line) > 0 && (j = -1))
+	while (get_next_line(fd, &line) > 0)// && check borders
 	{
 		split = ft_strsplit(line, ' ');
 		len = ft_strlen2(split);
 		w3d->width_map = w3d->height_map == 0 ? len : w3d->width_map;
-		if (w3d->width_map != len)
+		if ( len != w3d->width_map)
 			return (free_all(&split, &line, &w3d->map, fd));
 		if (!(w3d->map = (int*)ft_realloc((void*)(&w3d->map), sizeof(int)
 						* w3d->height_map

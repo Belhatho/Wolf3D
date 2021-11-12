@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbouchak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: belhatho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 13:47:15 by hbouchak          #+#    #+#             */
-/*   Updated: 2019/04/07 13:47:45 by hbouchak         ###   ########.fr       */
+/*   Created: 2019/05/21 20:19:40 by belhatho          #+#    #+#             */
+/*   Updated: 2019/05/21 20:20:35 by belhatho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ char	*ft_strrchr(const char *s, int c)
 		s++;
 	while (*s != c)
 		s--;
+	s++;
 	return ((char*)s);
 }
