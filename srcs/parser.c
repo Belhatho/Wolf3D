@@ -69,12 +69,12 @@ int			parser(t_wolf3d *w3d, char *file, int len)
 	w3d->map = NULL;
 	if ((fd = open(file, O_RDONLY)) == -1 || read(fd, line, 0) < 0)
 		return (-1);
-	while (get_next_line(fd, &line) > 0)// && check borders
+	while (get_next_line(fd, &line) > 0)
 	{
 		split = ft_strsplit(line, ' ');
 		len = ft_strlen2(split);
 		w3d->width_map = w3d->height_map == 0 ? len : w3d->width_map;
-		if ( len != w3d->width_map)
+		if (len != w3d->width_map) // && check borders
 			return (free_all(&split, &line, &w3d->map, fd));
 		if (!(w3d->map = (int*)ft_realloc((void*)(&w3d->map), sizeof(int)
 						* w3d->height_map
