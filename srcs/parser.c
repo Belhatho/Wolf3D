@@ -30,6 +30,7 @@ static int	free_all(char ***split, char **line, int **map, int fd)
 	*line = NULL;
 	if (*map)
 		free(*map);
+		
 	*map = NULL;
 	close(fd);
 	return (-1);
