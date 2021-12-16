@@ -30,7 +30,6 @@ static int	free_all(char ***split, char **line, int **map, int fd)
 	*line = NULL;
 	if (*map)
 		free(*map);
-		
 	*map = NULL;
 	close(fd);
 	return (-1);
@@ -41,7 +40,7 @@ static void	set_square(t_wolf3d *w3d, char **split, int j)
 	int square;
 
 	square = ft_atoi(split[j]);
-	if (square == 0 && w3d->pos_joueur.x == -1.0)
+	if (square == 0 && w3d->pos_joueur.x == -1.0) // first 0 ==> pos.joueur
 	{
 		w3d->pos_joueur.x = j + 0.2;
 		w3d->pos_joueur.y = w3d->height_map + 0.2;
@@ -74,7 +73,7 @@ int			parser(t_wolf3d *w3d, char *file, int len)
 	{
 		split = ft_strsplit(line, ' ');
 		len = ft_strlen2(split);
-		w3d->width_map = w3d->height_map == 0 ? len : w3d->width_map;
+		w3d->width_map = (w3d->height_map == 0) ? len : w3d->width_map;
 		if (len != w3d->width_map) // && check borders
 			return (free_all(&split, &line, &w3d->map, fd));
 		if (!(w3d->map = (int*)ft_realloc((void*)(&w3d->map), sizeof(int)
