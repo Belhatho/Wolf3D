@@ -28,6 +28,43 @@ int				final(t_wolf3d *w3d)
 	return (0);
 }
 
+
+int			borders(t_wolf3d *w3d)
+{
+    int i = -1;
+
+    while (++i < w3d->width_map)
+        if (w3d->map[i] == 0)
+            return (-1);
+    while (i < w3d->width_map * (w3d->height_map - 1))
+    {
+        if (w3d->map[i] == 0 || w3d->map[i + w3d->width_map - 1] == 0)
+            return (-1);
+        i = i + w3d->width_map;
+    }
+    while (i < w3d->width_map * w3d->height_map)
+        if (w3d->map[i++] == 0)
+            return (-1);
+    return (1);
+}
+
+void     print(t_wolf3d *w3d)
+{
+    int i = 0;
+    
+    while (i < (w3d->width_map * w3d->height_map))
+    {
+        ft_putnbr(w3d->map[i]);
+        ft_putstr("#");
+        if ((i != 0) && (i + 1) % w3d->width_map == 0)
+        {
+            ft_putstr("$\n");
+        }
+        i++;
+    }
+	return (0);
+}
+
 static void		initializing(t_wolf3d *w3d, char *file)
 {
 	w3d->height_map = 0;
@@ -35,7 +72,11 @@ static void		initializing(t_wolf3d *w3d, char *file)
 	w3d->pos_joueur = (t_vect_f){-1.0, -1.0};
 	if (parser(w3d, file, 0) == -1 && write(1, "error: parser fails\n", 20))
 		exit(0);
-	if (w3d->pos_joueur.x == -1.0 && write(1, "error: need a free space\n", 25))
+	
+	print(w3d);
+
+	if ((w3d->pos_joueur.x == -1.0 || borders(w3d) == -1) &&
+	write(1, "error: no free space OR no closed borders\n", 42))
 	{
 		free(w3d->map);
 		exit(0);
