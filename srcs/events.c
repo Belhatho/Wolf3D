@@ -12,7 +12,7 @@
 
 #include "../inc/wolf3d.h"
 
-static void		rotation(t_vect_f *dir, t_vect_f *plane, double angle)
+static void	rotation(t_vect_f *dir, t_vect_f *plane, double angle)
 {
 	double		oldx;
 
@@ -24,7 +24,7 @@ static void		rotation(t_vect_f *dir, t_vect_f *plane, double angle)
 	plane->y = oldx * sin(angle) + plane->y * cos(angle);
 }
 
-static void		move(t_wolf3d *w3d, t_vect_f next)
+static void	move(t_wolf3d *w3d, t_vect_f next)
 {
 	if (w3d->map[(int)next.x + (int)w3d->pos_joueur.y * w3d->width_map] == 0
 		&& next.x >= 0.0001 && (int)next.x < w3d->width_map)
@@ -34,7 +34,7 @@ static void		move(t_wolf3d *w3d, t_vect_f next)
 		w3d->pos_joueur.y = next.y;
 }
 
-int				events(int key, t_wolf3d *w3d)
+int	events(int key, t_wolf3d *w3d)
 {
 	t_vect_f		next;
 
@@ -56,12 +56,12 @@ int				events(int key, t_wolf3d *w3d)
 		rotation(&w3d->dir_joueur, &w3d->plane, 5.0 * M_PI / 180.0);
 	if (key == K_LEFT)
 		rotation(&w3d->dir_joueur, &w3d->plane, -5.0 * M_PI / 180.0);
-	(key == K_UP || key == K_DOWN || key == K_RIGHT
+	(key == K_UP || key == K_DOWN || key == K_RIGHT\
 	|| key == K_LEFT) ? draw(w3d) : 0;
 	return (1);
 }
 
-int				mouse(int x, int y, t_wolf3d *w3d)
+int	mouse(int x, int y, t_wolf3d *w3d)
 {
 	static int	old_x = 0;
 

@@ -24,14 +24,14 @@ void	init_raycasting(t_direct *h, t_wolf3d *w3d, int x)
 	h->step.x = h->ray.x < 0 ? -1 : 1;
 	h->next.x = h->ray.x < 0 ? (w3d->pos_joueur.x - h->curr.x) * h->delta.x :
 		(h->curr.x + 1.0 - w3d->pos_joueur.x) * h->delta.x;
-	h->step.y = h->ray.y < 0 ? -1 : 1;
+	(h->step.y = h->ray.y < 0) ? -1 : 1;
 	h->next.y = h->ray.y < 0 ? (w3d->pos_joueur.y - h->curr.y) * h->delta.y :
 		(h->curr.y + 1.0 - w3d->pos_joueur.y) * h->delta.y;
 }
 
 void	find_wall(t_direct *h, t_wall *r, t_wolf3d *w3d)
 {
-	while (h->curr.x >= 0 && h->curr.x < w3d->width_map
+	while (h->curr.x >= 0 && h->curr.x < w3d->width_map \
 			&& h->curr.y >= 0 && h->curr.y < w3d->height_map)
 	{
 		if (h->next.x < h->next.y)
@@ -53,7 +53,7 @@ void	find_wall(t_direct *h, t_wall *r, t_wolf3d *w3d)
 		h->dist = (h->curr.x - w3d->pos_joueur.x
 				+ (1 - h->step.x) / 2) / h->ray.x;
 	else
-		h->dist = (h->curr.y - w3d->pos_joueur.y +
+		h->dist = (h->curr.y - w3d->pos_joueur.y + \
 				(1 - h->step.y) / 2) / h->ray.y;
 }
 

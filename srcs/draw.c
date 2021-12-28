@@ -12,7 +12,7 @@
 
 #include "../inc/wolf3d.h"
 
-static void		*process(t_thread *p)
+static void	*process(t_thread *p)
 {
 	t_wall		r;
 	int			x;
@@ -31,7 +31,7 @@ static void		*process(t_thread *p)
 				* r.txt.y + r.txt.x];
 			p->w->pixels[x + WIDTH * y] = r.color;
 		}
-		if (r.ext.x > 0 && (y = -1) < 0)
+		if (r.ext.x > 0 && ((y = -1) < 0))
 			while (++y < r.ext.x)
 				p->w->pixels[x + WIDTH * y] = 0x0000ff;
 		if (r.ext.y < HEIGHT && (y = r.ext.y - 1) < HEIGHT)
@@ -41,7 +41,7 @@ static void		*process(t_thread *p)
 	pthread_exit(NULL);
 }
 
-void			multi_thread(t_wolf3d *w3d)
+void	multi_thread(t_wolf3d *w3d)
 {
 	t_thread	t[NBTHREAD];
 	pthread_t	p[NBTHREAD];
@@ -52,13 +52,13 @@ void			multi_thread(t_wolf3d *w3d)
 	{
 		t[i].x_th = i;
 		t[i].w = w3d;
-		pthread_create(&p[i], NULL, (void*)process, &t[i]);
+		pthread_create(&p[i], NULL, (void *)process, &t[i]);
 	}
 	while (--i >= 0)
 		pthread_join(p[i], NULL);
 }
 
-static void		small_map(t_wolf3d *w3d)
+static void	small_map(t_wolf3d *w3d)
 {
 	int		x;
 	int		y;
@@ -76,7 +76,7 @@ static void		small_map(t_wolf3d *w3d)
 		}
 }
 
-int				draw(t_wolf3d *w3d)
+int	draw(t_wolf3d *w3d)
 {
 	bzero(w3d->pixels, WIDTH * HEIGHT * 4);
 	multi_thread(w3d);

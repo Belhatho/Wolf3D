@@ -12,7 +12,7 @@
 
 #include "../inc/wolf3d.h"
 
-int			texture(t_wolf3d *w3d)
+int	texture(t_wolf3d *w3d)
 {
 	char	*filename;
 	int		i;
@@ -23,7 +23,7 @@ int			texture(t_wolf3d *w3d)
 		filename = ft_strjoin2("xpm/", ft_strjoin2(ft_itoa(i), ".xpm", 0), 1);
 		w3d->txt.img[i] = mlx_xpm_file_to_image(w3d->mlx,
 				filename, &w3d->txt.width[i],
-					&w3d->txt.height[i]);
+				&w3d->txt.height[i]);
 		free(filename);
 	}
 	while (--i >= 0)

@@ -37,10 +37,10 @@ static int	free_all(char ***split, char **line, int **map, int fd)
 
 static void	set_square(t_wolf3d *w3d, char **split, int j)
 {
-	int square;
+	int	square;
 
 	square = ft_atoi(split[j]);
-	if (square == 0 && w3d->pos_joueur.x == -1.0) // first 0 ==> pos.joueur
+	if (square == 0 && w3d->pos_joueur.x == -1.0)
 	{
 		w3d->pos_joueur.x = j + 0.2;
 		w3d->pos_joueur.y = w3d->height_map + 0.2;
@@ -50,7 +50,7 @@ static void	set_square(t_wolf3d *w3d, char **split, int j)
 
 static void	aux(t_wolf3d *w3d, int len, char **split, char *line)
 {
-	int j;
+	int	j;
 
 	j = -1;
 	while (++j < len)
@@ -59,7 +59,7 @@ static void	aux(t_wolf3d *w3d, int len, char **split, char *line)
 	free(line);
 }
 
-int			parser(t_wolf3d *w3d, char *file, int len)
+int	parser(t_wolf3d *w3d, char *file, int len)
 {
 	char	**split;
 	char	*line;
@@ -74,12 +74,11 @@ int			parser(t_wolf3d *w3d, char *file, int len)
 		split = ft_strsplit(line, ' ');
 		len = ft_strlen2(split);
 		w3d->width_map = (w3d->height_map == 0) ? len : w3d->width_map;
-		if (len != w3d->width_map) // && check borders
+		if (len != w3d->width_map)
 			return (free_all(&split, &line, &w3d->map, fd));
-		if (!(w3d->map = (int*)ft_realloc((void*)(&w3d->map), sizeof(int)
-						* w3d->height_map
-							* w3d->width_map, sizeof(int)
-								* (w3d->height_map + 1) * w3d->width_map)))
+		if (!(w3d->map = (int*)ft_realloc((void*)(&w3d->map), \
+				sizeof(int)* w3d->height_map * w3d->width_map, \
+						sizeof(int) * (w3d->height_map + 1) * w3d->width_map)))
 			return (free_all(&split, &line, &w3d->map, fd));
 		aux(w3d, len, split, line);
 		w3d->height_map++;
