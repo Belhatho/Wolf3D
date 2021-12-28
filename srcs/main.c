@@ -63,7 +63,6 @@ int	borders(t_wolf3d *w3d)
 // 		}
 // 		i++;
 // 	}
-// 	return (0);
 // }
 
 static void	initializing(t_wolf3d *w3d, char *file)

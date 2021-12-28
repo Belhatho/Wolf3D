@@ -26,4 +26,3 @@ void	ft_free(char ***to)
 	}
 	free(to_free);
 }
-

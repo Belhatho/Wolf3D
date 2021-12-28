@@ -19,7 +19,7 @@
 
 # define BUFF_SIZE 50
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;

@@ -24,7 +24,7 @@ void	init_raycasting(t_direct *h, t_wolf3d *w3d, int x)
 	h->step.x = h->ray.x < 0 ? -1 : 1;
 	h->next.x = h->ray.x < 0 ? (w3d->pos_joueur.x - h->curr.x) * h->delta.x :
 		(h->curr.x + 1.0 - w3d->pos_joueur.x) * h->delta.x;
-	(h->step.y = h->ray.y < 0) ? -1 : 1;
+	h->step.y = h->ray.y < 0 ? -1 : 1;
 	h->next.y = h->ray.y < 0 ? (w3d->pos_joueur.y - h->curr.y) * h->delta.y :
 		(h->curr.y + 1.0 - w3d->pos_joueur.y) * h->delta.y;
 }

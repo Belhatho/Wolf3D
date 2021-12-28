@@ -24,4 +24,3 @@ void	*ft_realloc(void **ptr, size_t old, size_t len)
 		free(*ptr);
 	return (real);
 }
-

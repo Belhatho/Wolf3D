@@ -12,6 +12,16 @@
 
 #include "libft.h"
 
+static int	check_null(char const *s, char ***new_s, char c)
+{
+	if (s == NULL)
+		return (0);
+	(*new_s) = (char **)malloc((ft_nbr_words(s, c) + 1) * sizeof(char *));
+	if (!(**new_s))
+		return (0);
+	return (1);
+}
+
 char	**ft_strsplit(char const *s, char c)
 {
 	int		i[3];
@@ -19,9 +29,7 @@ char	**ft_strsplit(char const *s, char c)
 
 	i[0] = 0;
 	i[2] = 0;
-	if (s == NULL)
-		return (NULL);
-	if (!(new_s = (char **)malloc((ft_nbr_words(s, c) + 1) * sizeof(char*))))
+	if (!check_null(s, &new_s, c))
 		return (NULL);
 	while (s[i[2]])
 	{
@@ -30,7 +38,8 @@ char	**ft_strsplit(char const *s, char c)
 		if (s[i[2]])
 		{
 			i[1] = 0;
-			if (!(new_s[i[0]] = (char *)malloc(ft_word_size(s, c, i[2]) + 1)))
+			new_s[i[0]] = (char *)malloc(ft_word_size(s, c, i[2]) + 1);
+			if (!(new_s[i[0]]))
 				return (NULL);
 			while (s[i[2]] != c && s[i[2]])
 				new_s[i[0]][i[1]++] = s[i[2]++];
